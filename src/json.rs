@@ -6,7 +6,6 @@ use std::io::Seek;
 use std::io::Write;
 
 use crate::binwalk::AnalysisResults;
-use crate::display;
 use crate::entropy::FileEntropy;
 
 const STDOUT: &str = "-";
@@ -62,7 +61,8 @@ impl JsonLogger {
     fn write_json(&self, data: &str) {
         if let Some(log_file) = &self.json_file {
             if log_file == STDOUT {
-                display::print_plain(false, data);
+                print!("{}", data);
+                let _ = io::stdout().flush();
             } else {
                 // Open file for reading and writing, create if does not already exist
                 match fs::OpenOptions::new()

@@ -35,13 +35,7 @@ pub struct CliArgs {
     #[arg(short = 'a', long)]
     pub search_all: bool,
 
-    /// Generate an entropy graph with Plotly
-    #[arg(short = 'E', long, conflicts_with = "extract")]
-    pub entropy: bool,
 
-    /// Save entropy graph as a PNG file
-    #[arg(short, long)]
-    pub png: Option<String>,
 
     /// Log JSON results to a file ('-' for stdout)
     #[arg(short, long)]

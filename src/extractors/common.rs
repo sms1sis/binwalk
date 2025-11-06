@@ -28,6 +28,7 @@ pub type InternalExtractor = fn(&[u8], usize, Option<&str>) -> ExtractionResult;
 
 /// Enum to define either an Internal or External extractor type
 #[derive(Debug, Default, Clone, Eq, PartialEq, Ord, PartialOrd)]
+#[allow(unpredictable_function_pointer_comparisons)]
 pub enum ExtractorType {
     External(String),
     Internal(InternalExtractor),

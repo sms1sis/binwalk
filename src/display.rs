@@ -5,8 +5,6 @@ use colored::ColoredString;
 use colored::Colorize;
 use log::error;
 use std::collections::HashMap;
-use std::io;
-use std::io::Write;
 use std::time;
 
 const DELIM_CHARACTER: &str = "-";
@@ -386,15 +384,3 @@ pub fn print_stats(
     );
 }
 
-pub fn print_plain(quiet: bool, msg: &str) {
-    if !quiet {
-        print!("{msg}");
-        let _ = io::stdout().flush();
-    }
-}
-
-pub fn println_plain(quiet: bool, msg: &str) {
-    if !quiet {
-        println!("{msg}");
-    }
-}

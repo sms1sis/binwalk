@@ -69,24 +69,7 @@ fn main() -> ExitCode {
 
     let mut json_logger = json::JsonLogger::new(cliargs.log);
 
-    // If entropy analysis was requested, generate the entropy graph and return
-    if cliargs.entropy {
-        display::print_plain(cliargs.quiet, "Calculating file entropy...");
 
-        if let Ok(entropy_results) =
-            entropy::plot(cliargs.file_name.unwrap(), cliargs.stdin, cliargs.png)
-        {
-            // Log entropy results to JSON file, if requested
-            json_logger.log(json::JSONType::Entropy(entropy_results.clone()));
-            json_logger.close();
-
-            display::println_plain(cliargs.quiet, "done.");
-        } else {
-            panic!("Entropy analysis failed!");
-        }
-
-        return ExitCode::SUCCESS;
-    }
 
     // If extraction or data carving was requested, we need to initialize the output directory
     if cliargs.extract || cliargs.carve {
